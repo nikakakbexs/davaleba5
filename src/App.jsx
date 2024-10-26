@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
   const hiddenWord = "hello";
@@ -64,21 +65,29 @@ function App() {
   });
 
   return (
-    <div>
-      <h1>Type to reveal the hidden word!</h1>
-      <p>{typedText}</p>
-      {gameOver && <p>Game Over! You guessed the word.</p>}
-
-      <div>
-        <h1>Timer: {time} seconds</h1>
-        <button onClick={handleStartPause}>
-          {isRunning ? "Pause" : "Start"}
-        </button>
-        <button onClick={handleReset}>Reset</button>
+    <div className="app">
+      <div className="game">
+        <h1>Type to reveal the hidden word!</h1>
+        <p className="typed-text">{typedText}</p>
+        {gameOver && (
+          <p className="game-over">Game Over! You guessed the word.</p>
+        )}
       </div>
 
-      <h1>X: {client.x}</h1>
-      <h1>Y: {client.y}</h1>
+      <div className="timer">
+        <h1>Timer: {time} seconds</h1>
+        <button onClick={handleStartPause} className="button start-pause">
+          {isRunning ? "Pause" : "Start"}
+        </button>
+        <button onClick={handleReset} className="button reset">
+          Reset
+        </button>
+      </div>
+
+      <div className="coordinates">
+        <h1>X: {client.x}</h1>
+        <h1>Y: {client.y}</h1>
+      </div>
     </div>
   );
 }
